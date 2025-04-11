@@ -21,7 +21,7 @@ runs:
         repository: 'zatsit-oss/zats-greenscore-landing'
         ref: ${{ inputs.branch }}
         token: ${{ inputs.token }}
-        path: apigreenscore/landing-pages/
+        path: apigreenscore/
 
     - name: Install Node.js
       uses: actions/setup-node@v4
