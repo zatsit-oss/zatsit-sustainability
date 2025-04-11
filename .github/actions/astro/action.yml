@@ -46,4 +46,4 @@ runs:
       shell: bash
       run: |
         mkdir -p public/apigreenscore
-        cp -r landing-page/dist/* public/apigreenscore/
+        cp -r apigreenscore/landing-page/dist/* public/apigreenscore/
