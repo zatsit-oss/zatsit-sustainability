@@ -1,5 +1,5 @@
 ---
-name: API Green Score - Publish Greenscore Content
+name: Publish Greenscore Content
 
 on:
   push:
@@ -43,22 +43,22 @@ jobs:
               "production": {
                 "google_project_id": "${{ vars.GOOGLE_PROJECT_ID_PROD }}",
                 "bucket_name": "${{ vars.GCS_BUCKET_NAME_PROD }}",
-                "service_account__secret_name": "GOOGLE_STORAGE_SERVICE_ACCOUNT_ZATSIT_GREENSCORE_PROD"
+                "service_account__secret_name": "GOOGLE_STORAGE_SERVICE_ACCOUNT_ZATSIT_SUSTAINABILITY_PROD"
               },
               "staging": {
                 "google_project_id": "${{ vars.GOOGLE_PROJECT_ID_DEV }}",
                 "bucket_name": "${{ vars.GCS_BUCKET_NAME_STAGING }}",
-                "service_account__secret_name": "GOOGLE_STORAGE_SERVICE_ACCOUNT_ZATSIT_GREENSCORE_STAGING"
+                "service_account__secret_name": "GOOGLE_STORAGE_SERVICE_ACCOUNT_ZATSIT_SUSTAINABILITY_STAGING"
               }
             }
 
-      - name: Fetch and Build greenscore content
+      - name: Fetch and Build Sustainability Portal content
         uses: ./.github/actions/sustainability
         with:
           token: ${{ secrets.GH_PAT }}
           branch: ${{ github.head_ref || github.ref_name }}
 
-      - name: Fetch and Build greenscore content
+      - name: Fetch and Build Sustainability Portal content
         uses: ./.github/actions/apigreenscore
         with:
           token: ${{ secrets.GH_PAT }}
