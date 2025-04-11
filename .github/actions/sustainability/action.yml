@@ -48,4 +48,4 @@ runs:
         # cp -r sustainability-portal/dist/* public/
 
         # Temporary. Waiting for the Sustainability Portal to be ready
-        cp -r sustainability-portal/index.html public/
+        cp -r sustainability-portal/sustainability/index.html public/
