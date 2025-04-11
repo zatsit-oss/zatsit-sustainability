@@ -1,5 +1,5 @@
 ---
-name: Publish Greenscore Content
+name: Publish Sustainability Portal
 
 on:
   push:
