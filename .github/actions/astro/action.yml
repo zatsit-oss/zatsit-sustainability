@@ -28,7 +28,7 @@ runs:
       with:
         node-version: '22'
         cache: 'npm'
-        cache-dependency-path: landing-page/package-lock.json
+        # cache-dependency-path: landing-page/package-lock.json
 
     - name: Install dependencies
       shell: bash
