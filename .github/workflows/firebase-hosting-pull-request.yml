@@ -25,11 +25,11 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      # - name: Fetch and Build greenscore content
-      #   uses: ./.github/actions/sustainability
-      #   with:
-      #     token: ${{ secrets.GH_PAT }}
-      #     branch: ${{ github.head_ref || github.ref_name }}
+      - name: Fetch and Build greenscore content
+        uses: ./.github/actions/sustainability
+        with:
+          token: ${{ secrets.GH_PAT }}
+          branch: ${{ github.head_ref || github.ref_name }}
 
       - name: Fetch and Build greenscore content
         uses: ./.github/actions/apigreenscore

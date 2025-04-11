@@ -45,4 +45,7 @@ runs:
       shell: bash
       run: |
         mkdir -p public/
-        cp -r sustainability-portal/dist/* public/
+        # cp -r sustainability-portal/dist/* public/
+
+        # Temporary. Waiting for the Sustainability Portal to be ready
+        cp -r sustainability-portal/index.html public/
