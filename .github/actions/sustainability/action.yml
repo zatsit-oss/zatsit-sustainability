@@ -22,24 +22,24 @@ runs:
         token: ${{ inputs.token }}
         path: sustainability-portal/
 
-    - name: Install Node.js
-      uses: actions/setup-node@v4
-      with:
-        node-version: '22'
-        cache: 'npm'
-        cache-dependency-path: sustainability-portal/package-lock.json
+    # - name: Install Node.js
+    #   uses: actions/setup-node@v4
+    #   with:
+    #     node-version: '22'
+    #     cache: 'npm'
+    #     cache-dependency-path: sustainability-portal/package-lock.json
 
-    - name: Install dependencies
-      shell: bash
-      run: |
-        cd sustainability-portal/
-        npm install
+    # - name: Install dependencies
+    #   shell: bash
+    #   run: |
+    #     cd sustainability-portal/
+    #     npm install
 
-    - name: Build project
-      shell: bash
-      run: |
-        cd sustainability-portal/
-        npm run build
+    # - name: Build project
+    #   shell: bash
+    #   run: |
+    #     cd sustainability-portal/
+    #     npm run build
 
     - name: Copy build files
       shell: bash
