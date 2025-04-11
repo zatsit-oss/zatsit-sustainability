@@ -21,25 +21,25 @@ runs:
         repository: 'zatsit-oss/zats-greenscore-landing'
         ref: ${{ inputs.branch }}
         token: ${{ inputs.token }}
-        path: landing-pages/
+        path: apigreenscore/landing-pages/
 
     - name: Install Node.js
       uses: actions/setup-node@v4
       with:
         node-version: '22'
         cache: 'npm'
-        # cache-dependency-path: landing-page/package-lock.json
+        cache-dependency-path: apigreenscore/landing-page/package-lock.json
 
     - name: Install dependencies
       shell: bash
       run: |
-        cd landing-page/
+        cd apigreenscore/landing-page/
         npm install
 
     - name: Build project
       shell: bash
       run: |
-        cd landing-page/
+        cd apigreenscore/landing-page/
         npm run build
 
     - name: Copy build files
