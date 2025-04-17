@@ -3,11 +3,6 @@ name: Deploy to Firebase Hosting on PR
 
 on:
   pull_request:
-    # paths:
-    #   - "logos/**"
-    #   - "guide.yml"
-    #   - "settings.yml"
-    #   - "zats-sustainability.yml"
 
 permissions:
   checks: write
@@ -35,13 +30,13 @@ jobs:
         uses: ./.github/actions/apigreenscore
         with:
           token: ${{ secrets.GH_PAT }}
-          branch: ${{ github.head_ref || github.ref_name }}
+          branch: 'main'
 
       - name: Fetch and Build Landscape content
         uses: ./.github/actions/landscape2
         with:
           token: ${{ secrets.GH_PAT }}
-          branch: ${{ github.head_ref || github.ref_name }}
+          branch: 'main'
 
       - uses: FirebaseExtended/action-hosting-deploy@v0
         with:
