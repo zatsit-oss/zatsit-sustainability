@@ -1,1 +1,334 @@
-Sustainability Portal
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sustainability Portal - Eco-designed Applications</title>
+    <style>
+        :root {
+            --primary-color: #2E7D32;
+            --secondary-color: #81C784;
+            --accent-color: #388E3C;
+            --light-color: #E8F5E9;
+            --dark-color: #1B5E20;
+            --text-color: #212121;
+            --text-light: #FFFFFF;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: var(--text-color);
+            background-color: var(--light-color);
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        header {
+            background-color: var(--primary-color);
+            color: var(--text-light);
+            padding: 20px 0;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+        
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-size: 1.8rem;
+            font-weight: bold;
+        }
+        
+        .nav-links {
+            display: flex;
+            gap: 20px;
+        }
+        
+        .nav-links a {
+            color: var(--text-light);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+        
+        .nav-links a:hover {
+            color: var(--secondary-color);
+        }
+        
+        .hero {
+            background: linear-gradient(rgba(46, 125, 50, 0.8), rgba(27, 94, 32, 0.9)), url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="200" height="200" viewBox="0 0 200 200"><rect width="100%" height="100%" fill="%232E7D32"/><path d="M0,50 Q50,-20 100,50 T200,50 L200,0 L0,0 Z" fill="%2381C784"/><path d="M0,150 Q50,80 100,150 T200,150 L200,200 L0,200 Z" fill="%23388E3C"/><circle cx="50" cy="100" r="20" fill="%23E8F5E9" opacity="0.3"/><circle cx="150" cy="100" r="30" fill="%23E8F5E9" opacity="0.2"/></svg>');
+            color: var(--text-light);
+            padding: 80px 0;
+            text-align: center;
+        }
+        
+        .hero h1 {
+            font-size: 2.8rem;
+            margin-bottom: 20px;
+        }
+        
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 800px;
+            margin: 0 auto 30px;
+        }
+        
+        .cta-button {
+            display: inline-block;
+            background-color: var(--accent-color);
+            color: var(--text-light);
+            padding: 12px 30px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        
+        .cta-button:hover {
+            background-color: var(--dark-color);
+            transform: translateY(-3px);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+        }
+        
+        .features {
+            padding: 80px 0;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 50px;
+            font-size: 2rem;
+            color: var(--primary-color);
+        }
+        
+        .cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        
+        .card {
+            background-color: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+        }
+        
+        .card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+        }
+        
+        .card-image {
+            height: 200px;
+            background-color: var(--secondary-color);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .card-icon {
+            font-size: 5rem;
+            color: var(--text-light);
+        }
+        
+        .card-content {
+            padding: 25px;
+        }
+        
+        .card-title {
+            font-size: 1.5rem;
+            color: var(--primary-color);
+            margin-bottom: 15px;
+        }
+        
+        .card-text {
+            margin-bottom: 20px;
+            color: #555;
+        }
+        
+        .card-link {
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: var(--primary-color);
+            color: var(--text-light);
+            text-decoration: none;
+            border-radius: 4px;
+            transition: background-color 0.3s ease;
+        }
+        
+        .card-link:hover {
+            background-color: var(--accent-color);
+        }
+        
+        .info-section {
+            background-color: white;
+            padding: 80px 0;
+        }
+        
+        .info-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+            align-items: center;
+        }
+        
+        .info-text h2 {
+            color: var(--primary-color);
+            font-size: 2rem;
+            margin-bottom: 20px;
+        }
+        
+        .info-text p {
+            margin-bottom: 15px;
+        }
+        
+        .info-list {
+            list-style-type: none;
+            margin: 20px 0;
+        }
+        
+        .info-list li {
+            margin-bottom: 10px;
+            position: relative;
+            padding-left: 30px;
+        }
+        
+        .info-list li:before {
+            content: "✓";
+            position: absolute;
+            left: 0;
+            color: var(--accent-color);
+            font-weight: bold;
+        }
+        
+        .info-image {
+            background-color: var(--light-color);
+            height: 300px;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        footer {
+            background-color: var(--dark-color);
+            color: var(--text-light);
+            padding: 30px 0;
+            text-align: center;
+        }
+        
+        @media (max-width: 768px) {
+            .info-container {
+                grid-template-columns: 1fr;
+            }
+            
+            .cards {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <nav>
+                <div class="logo">Sustainability Portal</div>
+                <div class="nav-links">
+                    <a href="/">Home</a>
+                    <a href="/landscape/index.html">Landscape</a>
+                    <a href="/apigreenscore/index.html">API Green Score</a>
+                </div>
+            </nav>
+        </div>
+    </header>
+    
+    <section class="hero">
+        <div class="container">
+            <h1>Eco-designed Applications</h1>
+            <p>Building sustainable digital solutions for a greener future. Learn how to reduce your application's carbon footprint and create more environmentally friendly software.</p>
+            <a href="#features" class="cta-button">Explore Solutions</a>
+        </div>
+    </section>
+    
+    <section class="features" id="features">
+        <div class="container">
+            <h2 class="section-title">Sustainable Development Resources</h2>
+            <div class="cards">
+                <div class="card">
+                    <div class="card-image">
+                        <div class="card-icon">🌍</div>
+                    </div>
+                    <div class="card-content">
+                        <h3 class="card-title">Sustainability Landscape</h3>
+                        <p class="card-text">Explore the current state of sustainable development in software engineering. Understand frameworks, methodologies, and industry standards for eco-friendly applications.</p>
+                        <a href="/landscape/" class="card-link">Explore the Landscape</a>
+                    </div>
+                </div>
+                
+                <div class="card">
+                    <div class="card-image">
+                        <div class="card-icon">📊</div>
+                    </div>
+                    <div class="card-content">
+                        <h3 class="card-title">API Green Score</h3>
+                        <p class="card-text">Measure and improve the ecological impact of your APIs. Learn optimization techniques, best practices, and how to evaluate the energy efficiency of your services.</p>
+                        <a href="/apigreenscore/" class="card-link">Check Your Score</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <section class="info-section">
+        <div class="container">
+            <div class="info-container">
+                <div class="info-text">
+                    <h2>Why Eco-designed Applications Matter</h2>
+                    <p>The digital sector accounts for approximately 4% of global greenhouse gas emissions, with its environmental footprint expected to double by 2025. Making your applications more sustainable isn't just good for the planet—it's good for business.</p>
+                    <ul class="info-list">
+                        <li>Reduced server costs and energy consumption</li>
+                        <li>Improved application performance and user experience</li>
+                        <li>Enhanced brand reputation and competitive advantage</li>
+                        <li>Regulatory compliance with emerging sustainability standards</li>
+                        <li>Contribution to global climate goals</li>
+                    </ul>
+                </div>
+                <div class="info-image">
+                    <svg width="300" height="200" viewBox="0 0 300 200" xmlns="http://www.w3.org/2000/svg">
+                        <!-- Stylized tree with laptop symbol -->
+                        <rect x="120" y="140" width="60" height="40" fill="#795548" />
+                        <circle cx="150" cy="90" r="50" fill="#81C784" />
+                        <circle cx="150" cy="75" r="40" fill="#66BB6A" />
+                        <circle cx="150" cy="60" r="30" fill="#4CAF50" />
+                        <rect x="130" y="110" width="40" height="30" rx="3" fill="#E0E0E0" />
+                        <rect x="130" y="110" width="40" height="5" rx="1" fill="#9E9E9E" />
+                        <rect x="145" y="140" width="10" height="5" fill="#5D4037" />
+                    </svg>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 Sustainability Portal. All rights reserved.</p>
+        </div>
+    </footer>
+</body>
+</html>
