@@ -18,7 +18,7 @@ on:
       apigreenscore:
         description: 'Branch to deploy (default: main)'
         required: false
-        default: main
+        default: ci/deploy
 
 permissions:
   checks: write
