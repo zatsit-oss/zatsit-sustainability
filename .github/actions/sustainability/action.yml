@@ -1,12 +1,12 @@
 ---
-name: Fetch and build Greenscore
-description: Fetch and build the greenscore
+name: Fetch and build Sustainability Portal
+description: Fetch and build the Sustainability Portal
 inputs:
   token:
     description: 'The token to use for fetching the repository'
     required: true
   branch:
-    description: 'The branch to fetch for greenscore content'
+    description: 'The branch to fetch for Sustainability Portal content'
     required: false
     default: 'ci/deploy'
     # default: 'main'
