@@ -56,7 +56,7 @@ jobs:
         uses: ./.github/actions/landscape2
         with:
           token: ${{ secrets.GH_PAT }}
-          branch: ${{ env.apigreenscore }}
+          branch: ${{ env.landscape }}
 
       - uses: FirebaseExtended/action-hosting-deploy@v0
         with:
