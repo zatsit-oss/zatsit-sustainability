@@ -8,8 +8,7 @@ inputs:
   branch:
     description: 'The branch to fetch for Sustainability Portal content'
     required: false
-    default: 'ci/deploy'
-    # default: 'main'
+    default: 'main'
 
 runs:
   using: 'composite'

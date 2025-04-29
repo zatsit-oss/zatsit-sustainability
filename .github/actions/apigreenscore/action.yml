@@ -8,8 +8,7 @@ inputs:
   branch:
     description: 'The branch to fetch for API Green Score content'
     required: false
-    default: 'ci/deploy'
-    # default: 'main'
+    default: 'main'
 
 runs:
   using: 'composite'

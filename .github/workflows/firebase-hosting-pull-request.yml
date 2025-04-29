@@ -10,7 +10,7 @@ on:
       env:
         description: 'Environment (production, staging)'
         required: true
-        default: staging
+        default: production
       landscape:
         description: 'Branch to deploy (default: main)'
         required: false
@@ -18,7 +18,7 @@ on:
       apigreenscore:
         description: 'Branch to deploy (default: main)'
         required: false
-        default: ci/deploy
+        default: main
 
 permissions:
   checks: write
@@ -31,7 +31,7 @@ concurrency:
 
 env:
   landscape: ${{ github.event.inputs.landscape || 'main' }}
-  apigreenscore: ${{ github.event.inputs.apigreenscore || 'ci/deploy' }}
+  apigreenscore: ${{ github.event.inputs.apigreenscore || 'main' }}
 
 jobs:
   build_and_preview:
