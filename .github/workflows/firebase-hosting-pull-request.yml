@@ -1,0 +1,73 @@
+---
+name: Deploy to Firebase Hosting on PR
+
+on:
+  pull_request:
+    branches:
+      - main
+  workflow_dispatch:
+    inputs:
+      env:
+        description: 'Environment (production, staging)'
+        required: true
+        default: production
+      landscape:
+        description: 'Branch to deploy (default: main)'
+        required: false
+        default: main
+      apigreenscore:
+        description: 'Branch to deploy (default: main)'
+        required: false
+        default: main
+
+permissions:
+  checks: write
+  contents: read
+  pull-requests: write
+
+concurrency:
+  group: ${{ github.ref || github.run_id }}
+  cancel-in-progress: true
+
+env:
+  landscape: ${{ github.event.inputs.landscape || 'main' }}
+  apigreenscore: ${{ github.event.inputs.apigreenscore || 'main' }}
+
+jobs:
+  build_and_preview:
+    if: ${{ github.event.pull_request.head.repo.full_name == github.repository }}
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Fetch and Build Sustainability Portal content
+        uses: ./.github/actions/sustainability
+        with:
+          token: ${{ secrets.GH_PAT }}
+          branch: ${{ github.head_ref || github.ref_name }}
+
+      - name: Fetch and Build API Green Score content
+        uses: ./.github/actions/apigreenscore
+        with:
+          token: ${{ secrets.GH_PAT }}
+          branch: ${{ env.apigreenscore }}
+
+      - name: Fetch and Build Landscape content
+        uses: ./.github/actions/landscape2
+        with:
+          token: ${{ secrets.GH_PAT }}
+          branch: ${{ env.landscape }}
+
+      - uses: FirebaseExtended/action-hosting-deploy@v0
+        with:
+          repoToken: ${{ secrets.GITHUB_TOKEN }}
+          firebaseServiceAccount: ${{ secrets.FIREBASE_SERVICE_ACCOUNT_ZATSIT_SUSTAINABILITY_STAGING }}
+          projectId: zatsit-dsi-externalsites-dev
+          target: zatsit-sustainability-8a058
+          expires: 30d
+
+      # needed to avoid the post action error
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 1

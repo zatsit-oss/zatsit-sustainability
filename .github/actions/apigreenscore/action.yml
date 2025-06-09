@@ -1,0 +1,48 @@
+---
+name: Fetch and build API Green Score
+description: Fetch and build the API Green Score
+inputs:
+  token:
+    description: 'The token to use for fetching the repository'
+    required: true
+  branch:
+    description: 'The branch to fetch for API Green Score content'
+    required: false
+    default: 'main'
+
+runs:
+  using: 'composite'
+  steps:
+    - name: Checkout repository
+      uses: actions/checkout@v3
+      with:
+        fetch-depth: 0
+        repository: 'zatsit-oss/zats-greenscore-landing'
+        ref: ${{ inputs.branch }}
+        token: ${{ inputs.token }}
+        path: apigreenscore/
+
+    - name: Install Node.js
+      uses: actions/setup-node@v4
+      with:
+        node-version: '22'
+        cache: 'npm'
+        cache-dependency-path: apigreenscore/landing-page/package-lock.json
+
+    - name: Install dependencies
+      shell: bash
+      run: |
+        cd apigreenscore/landing-page/
+        npm install
+
+    - name: Build project
+      shell: bash
+      run: |
+        cd apigreenscore/landing-page/
+        npm run build
+
+    - name: Copy build files
+      shell: bash
+      run: |
+        mkdir -p public/apigreenscore
+        cp -r apigreenscore/landing-page/dist/* public/apigreenscore/

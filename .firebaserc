@@ -1,0 +1,15 @@
+{
+  "projects": {
+    "default": "zatsit-dsi-externalsites-dev"
+  },
+  "targets": {
+    "zatsit-dsi-externalsites-dev": {
+      "hosting": {
+        "zatsit-sustainability-8a058": [
+          "zatsit-sustainability-8a058"
+        ]
+      }
+    }
+  },
+  "etags": {}
+}
