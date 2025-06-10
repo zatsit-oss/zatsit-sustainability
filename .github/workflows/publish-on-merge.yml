@@ -12,11 +12,11 @@ on:
         required: true
         default: production
       landscape:
-        description: 'Branch to deploy (default: main)'
+        description: 'Landscape: Branch to deploy (default: main)'
         required: false
         default: main
       apigreenscore:
-        description: 'Branch to deploy (default: main)'
+        description: 'API Green Score: Branch to deploy (default: main)'
         required: false
         default: main
 
